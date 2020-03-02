@@ -1,3 +1,4 @@
+// Import libraries
 import javafx.application.Application;
 import javafx.geometry.VPos;
 import javafx.scene.Scene;
@@ -17,40 +18,50 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class letterHistogram extends Application {
+    // Initialize pane and essential nodes
     Pane pane = new Pane();
     TextField txtFile = new TextField();
     VBox vBox = new VBox();
 
     @Override
     public void start(Stage primaryStage) {
+        // Initialize the user prompt
         Label label = new Label("Filename:", txtFile);
-
         label.setContentDisplay(ContentDisplay.RIGHT);
         txtFile.setPrefColumnCount(20);
 
+        // Initialize button
         Button viewBtn = new Button("View");
-        HBox hBoxObj = new HBox(label, viewBtn);
-        vBox.getChildren().addAll(pane, hBoxObj);
 
-        Scene sceneObj = new Scene(vBox);
-        primaryStage.setScene(sceneObj);
-        primaryStage.setTitle("HistogramForOccurrencesOfLetters");
+        // Add all of the nodes to an HBox
+        HBox hBox = new HBox(label, viewBtn);
+
+        // Add HBox to the main VBox
+        vBox.getChildren().addAll(pane, hBox);
+
+        // Create scene
+        Scene scene = new Scene(vBox);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("HistogramOfLetters");
         primaryStage.sizeToScene();
 
+        // Show histogram when button is pressed
         viewBtn.setOnAction(e -> {
             updateHistogram();
             vBox.setTranslateY(10);
+
+            // Resize pane for graph
             primaryStage.sizeToScene();
-            primaryStage.setTitle("HistogramForOccurrencesOfLetters");
+            primaryStage.setTitle("HistogramOfLetters");
         });
 
         primaryStage.show();
     }
 
+    // Add values to graph
     private void updateHistogram() {
         Histogram graph = new Histogram(txtFile.getText());
         pane.getChildren().add(graph);
-
     }
 
     private static class Histogram extends Pane {
