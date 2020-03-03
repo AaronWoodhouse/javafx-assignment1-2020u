@@ -64,15 +64,19 @@ public class letterHistogram extends Application {
         pane.getChildren().add(graph);
     }
 
+    // Creates histogram using set values for width and height
     private static class Histogram extends Pane {
         GridPane pane;
         double w = 250;
         double h = 250;
+
+        // Creates enough bars to handle every letter of the alphabet
         private char[] chars = new char[26];
         private int[] counts = new int[26];
         private Rectangle[] rectBars = new Rectangle[26];
         private File fileObj;
 
+        // Constructs a histogram
         public Histogram(String filename) {
             this.fileObj = new File(filename.trim());
             setWidth(w);
@@ -81,10 +85,12 @@ public class letterHistogram extends Application {
             drawHistogram();
         }
 
+        // Sets the file as the data to be displayed in the histogram
         private void readFile() {
             Scanner scanner;
             StringBuilder s = new StringBuilder();
 
+            // Scans file for data
             try {
                 scanner = new Scanner(fileObj);
 
@@ -95,6 +101,7 @@ public class letterHistogram extends Application {
 
             s = new StringBuilder(s.toString().toUpperCase());
 
+            // Counts occurrences of each letter
             for (int i = 0; i < s.length(); i++) {
                 char character = s.charAt(i);
 
@@ -104,6 +111,7 @@ public class letterHistogram extends Application {
             }
         }
 
+        // Gets the total amount of each letter
         private double getTotalCount() {
             double total = 0;
 
@@ -114,6 +122,7 @@ public class letterHistogram extends Application {
             return total;
         }
 
+        // Draws histogram
         private void drawHistogram() {
             pane = new GridPane();
             double barW = w / chars.length;
