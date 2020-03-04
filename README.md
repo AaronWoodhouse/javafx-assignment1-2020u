@@ -12,7 +12,7 @@ A program that calculates the future value of an investment at a given interest 
 ### Part 3
 A circle with three random points on the circle which form a triangle. The program will display the angles in the triangle. Use the mouse to drag a point along the perimeter of the circle. As you drag it, the triangle and angles are redisplayed dynamically.
 
-
+![Part 3 Image](./Images/Part3.png)
 ### Part 4
 A program that displays a histogram to show the occurrences of each letter in a text area. The histogram should show the occurrences of each letter in a text file, as shown in the following figure. Assume that the letters are not case sensitive.
 
