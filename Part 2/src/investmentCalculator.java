@@ -49,6 +49,7 @@ public class investmentCalculator extends Application {
 
         // Initialize button to calculate result
         Button btCalculate = new Button("Calculate");
+        gp.add(btCalculate, 1, 4);
 
         // Format pane and nodes
         gp.setAlignment(Pos.CENTER);
